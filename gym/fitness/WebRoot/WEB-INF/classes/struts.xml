@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!--配置一个常量-->
+    <constant name="struts.custom.i18n.resources" value="message"/>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <constant name="struts.multipart.maxSize" value="8041078"/>
+
+    <package name="struts" extends="json-default" namespace="/">
+        <global-results>
+            <result name="login">/login.jsp</result>
+            <result name="index">/index.jsp</result>
+        </global-results>
+        <action name="admin_*" class="com.action.AdminAction" method="{1}">
+            <result name="index">/managers/index.jsp</result>
+            <result name="login">/managers/login.jsp</result>
+            <result name="list" type="redirect">admin_list.action</result>
+        </action>
+         <action name="adminjson_*" class="com.action.AdminAction" method="{1}">
+            <result type="json" >
+                <!-- 指定一个根对象,生成的JSON是以哪个对象为根对象-->
+                <param name="root">admin</param>
+            </result>
+        </action>
+
+        <action name="user_*" class="com.action.UserAction" method="{1}">
+            <result name="user" >/managers/user.jsp</result>
+            <result name="index" type="redirect">coach_qlist.action</result>
+            <result name="list" type="redirect">user_list.action</result>
+        </action>
+
+
+        <action name="json_*" class="com.action.CoachAction" method="{1}">
+            <result type="json">
+                <!-- 指定一个根对象,生成的JSON是以哪个对象为根对象-->
+                <param name="root">coach</param>
+            </result>
+        </action>
+
+        <action name="coach_*" class="com.action.CoachAction" method="{1}">
+            <result name="coach" >/managers/coach.jsp</result>
+            <result name="list" type="redirect">coach_list.action</result>
+            <result name="index" type="redirect">course_qlist.action</result>
+        </action>
+
+        <action name="comment_*" class="com.action.CommentAction" method="{1}">
+            <result name="coumentListJson" type="json">
+                <!-- 指定一个根对象,生成的JSON是以哪个对象为根对象-->
+                <param name="root">comments</param>
+            </result>
+            <result name="index" type="redirect">coach_qlist.action</result>
+        </action>
+
+        <action name="news_*" class="com.action.NewsAction" method="{1}">
+            <result name="news" >/managers/news.jsp</result>
+            <result name="list" type="redirect">news_list.action</result>
+            <result name="about">/about.jsp</result>
+        </action>
+        <action name="newsjson_*" class="com.action.NewsAction" method="{1}">
+            <result type="json" >
+                <!-- 指定一个根对象,生成的JSON是以哪个对象为根对象-->
+                <param name="root">news</param>
+            </result>
+        </action>
+
+        <action name="course_*" class="com.action.CourseAction" method="{1}">
+            <result name="course" >/managers/course.jsp</result>
+            <result name="list" type="redirect">course_list.action</result>
+            <result name="index" >/index.jsp</result>
+        </action>
+
+        <action name="coursejson_*" class="com.action.CourseAction" method="{1}">
+            <result type="json" >
+                <!-- 指定一个根对象,生成的JSON是以哪个对象为根对象-->
+                <param name="root">course</param>
+            </result>
+        </action>
+
+        <action name="torder_*" class="com.action.TorderAction" method="{1}">
+            <result name="torder" >/managers/torder.jsp</result>
+            <result name="list" type="redirect">torder_list.action</result>
+            <result name="index" type="redirect">coach_qlist.action</result>
+        </action>
+
+        <action name="note_*" class="com.action.NoteAction" method="{1}">
+            <result name="note" >/managers/note.jsp</result>
+            <result name="list" type="redirect">note_list.action</result>
+            <result name="index" type="redirect">news_qlist.action</result>
+        </action>
+
+        <action name="muscle_*" class="com.action.MuscleAction" method="{1}">
+            <result name="muscle" >/managers/muscle.jsp</result>
+            <result name="list" type="redirect">muscle_list.action</result>
+        </action>
+
+        <action name="musclejson_*" class="com.action.MuscleAction" method="{1}">
+            <result type="json" >
+                <!-- 指定一个根对象,生成的JSON是以哪个对象为根对象-->
+                <param name="root">muscle</param>
+            </result>
+        </action>
+    </package>
+</struts>
