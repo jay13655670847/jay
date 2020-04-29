@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="garbage-collection:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>garbage-collection</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="garbage-collection-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="garbage-collection:war exploded" />
+    </root>
+  </artifact>
+</component>
